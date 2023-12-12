@@ -1,12 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	var a, b, c, s string
+	var a, b, c int
+	var s string
 
-	fmt.Println(a)
-	fmt.Println(b)
-	fmt.Println(c)
-	fmt.Println(s)
+	fmt.Scanf("%d", &a)
+	fmt.Scanf("%d %d", &b, &c)
+	fmt.Scanf("%s", &s)
+
+	fmt.Printf("%d %s\n", a+b+c, s)
 }
