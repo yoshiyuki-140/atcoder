@@ -10,4 +10,8 @@ func main() {
 	fmt.Scanln(c)
 	fmt.Scanln(s)
 
+	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
+	fmt.Println(s)
 }
