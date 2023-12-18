@@ -21,14 +21,23 @@ func main() {
 	fmt.Scanf("%d", &X)
 
 	// 処理
-	// 全探索アルゴリズム -> ブルートフォース
+	// 前から順にする場合はこれは早いと思う
 	for i := 0; i <= A; i++ {
 		for j := 0; j <= B; j++ {
 			for k := 0; k <= C; k++ {
 				if 500*i+100*j+50*k == X {
 					cnt++
 				}
+				if X < 50*k {
+					break
+				}
 			}
+			if X < 100*j {
+				break
+			}
+		}
+		if X < 500*i {
+			break
 		}
 	}
 
