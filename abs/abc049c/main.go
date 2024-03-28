@@ -5,43 +5,29 @@ import (
 	"strings"
 )
 
-func main() {
-	var S string
-	words := [4]string{"dream", "dreamer", "erase", "eraser"}
+func canTransform(S string) string {
+	keywords := []string{"dream", "dreamer", "erase", "eraser"}
 
-	// fmt.Scan(&S)
-	S = "dreamerase"
-
-	for s := S; len(s) != 0; {
-		for i, word := range words {
-			// words内にある文字列が含まれているか否かを判定する
-			if s := cutWord(s, word); s != "" {
-				// 含まれていた場合
-				S = s
-				fmt.Println("S :", S, "i :", i)
-				break
-			}
-			if i == len(words)-1 {
+	for len(S) > 0 {
+		found := false
+		for _, kw := range keywords {
+			if strings.HasSuffix(S, kw) {
+				found = true
+				S = strings.TrimSuffix(S, kw)
 				break
 			}
 		}
-		// 含まれていなかった場合
-		fmt.Println("NO")
-		break
+		if !found {
+			return "NO"
+		}
 	}
-	fmt.Println(cutWord(S, "dreamere"))
-	fmt.Println("YES")
+
+	return "YES"
 }
 
-func cutWord(str, targetWord string) string {
-	// 単語を検索して切り出す
-	index := strings.Index(str, targetWord)
-	if index == -1 {
-		// fmt.Println("単語が見つかりませんでした。")
-		return ""
-	}
-
-	wordLength := len(targetWord)
-	// 切り出し
-	return str[:index] + str[index+wordLength:]
+func main() {
+	var S string
+	fmt.Scan(&S)
+	result := canTransform(S)
+	fmt.Println(result)
 }
