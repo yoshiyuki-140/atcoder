@@ -1,0 +1,15 @@
+package main
+
+import "fmt"
+
+func main() {
+	var N int
+	fmt.Scan(&N)
+	for i := 1; i <= N; i++ {
+		if i%3 == 0 {
+			fmt.Printf("x")
+			continue
+		}
+		fmt.Printf("o")
+	}
+}
