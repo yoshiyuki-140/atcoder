@@ -15,7 +15,7 @@ func main() {
 		l++
 		for l > 1 {
 			if a[l-2] == a[l-1] {
-				a[l-2]++
+				a[l-2]++ // 値が同じときは2^x+2^x = 2^(x+1)だから
 				l--
 			} else {
 				break
