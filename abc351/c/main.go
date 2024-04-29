@@ -9,27 +9,25 @@ func main() {
 	// init
 	N := 0
 	fmt.Scan(&N)
-	A := make([]int, N)
-	for i := range A {
-		fmt.Scan(&A[i])
+	ballSizes := make([]int, N)
+	for i := 0; i < N; i++ {
+		fmt.Scan(&ballSizes[i])
+		ballSizes[i] = int(math.Pow(2, float64(ballSizes[i])))
 	}
-	column := make([]int, 0)
 
 	// main logic
-	for i := 0; i < N; i++ {
-		column = append(column, int(math.Pow(2, float64(A[i]))))
-
-		if len(column) <= 1 {
-			continue
-		}
-
-		for len(column) > 1 {
-			penultimateSize := column[len(column)-2]
-			lastSize := column[len(column)-1]
-			// fmt.Println(penultimateSize, lastSize)
-			if penultimateSize == lastSize {
+	column := make([]int, 0)
+	for _, ballSize := range ballSizes {
+		column = append(column, ballSize)
+		for {
+			if len(column) <= 1 {
+				break
+			}
+			last := column[len(column)-1]
+			penultimate := column[len(column)-2]
+			if last == penultimate {
 				column = column[:len(column)-2]
-				column = append(column, penultimateSize+lastSize)
+				column = append(column, last+penultimate)
 			} else {
 				break
 			}
