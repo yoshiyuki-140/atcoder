@@ -1,5 +1,7 @@
 package main
 
+// このコードは解きなおしで書いたやつ
+
 import (
 	"fmt"
 )
