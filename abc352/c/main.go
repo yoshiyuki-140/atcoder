@@ -18,25 +18,18 @@ func main() {
 	}
 
 	// main logic
+	totalShoulderHeight := 0 // 肩の高さのみの合計値を先に計算する
+	for _, g := range Gs {
+		totalShoulderHeight += g.A
+	}
+
 	maxHeight, height := 0, 0
-	for i := range Gs {
-		height = getHeight(&Gs, i)
+	for _, g := range Gs {
+		height = totalShoulderHeight - g.A + g.B // 頂上に選ばれた巨人の肩の高さを引いて、頭の高さを足す
 		if height > maxHeight {
 			maxHeight = height
 		}
 	}
-	fmt.Println(maxHeight)
-}
 
-func getHeight(gArray *[]Giant, top int) int {
-	// その順列の時の積み上げた巨人達の高さ
-	H := 0
-	for i, g := range *gArray {
-		if i == top {
-			H += g.B
-		} else {
-			H += g.A
-		}
-	}
-	return H
+	fmt.Println(maxHeight)
 }
