@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	N, K := 0, 0
@@ -11,18 +13,18 @@ func main() {
 	}
 
 	// main logic
-	mark, counter, empty := 0, 0, K
-	for {
-		if mark == N-1 {
-			break
-		}
-		if A[mark] > empty {
-			counter++
-			empty = K
-		} else {
-			empty -= A[mark]
+	counter, mark := 0, 0
+	for mark < N {
+		empty := K
+		for mark < N {
+			if A[mark] <= empty {
+				empty -= A[mark]
+			} else {
+				break
+			}
 			mark++
 		}
+		counter++
 	}
 	fmt.Println(counter)
 }
