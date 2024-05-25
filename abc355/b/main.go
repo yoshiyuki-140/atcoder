@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"slices"
 	"sort"
 )
 
@@ -21,7 +20,7 @@ func main() {
 
 	// main logic
 	// A + Bの作成
-	C := slices.Concat(A, B)
+	C := append(A, B...)
 	// A+Bをソート
 	sort.Ints(C)
 	// Aをソート
