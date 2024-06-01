@@ -2,28 +2,26 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
 
 func main() {
+	// init
 	N, L, R := 0, 0, 0
 	fmt.Scan(&N, &L, &R)
 	A := make([]int, N)
 
-	if L == R {
-		for i := range A {
-			A[i] = i + 1
-		}
-	} else {
-		for i := 0; i < N; i++ {
-			if L-1 <= i && i <= R-1 {
-				A[i] = N - L - i + 1
-				continue
-			}
-			A[i] = i + 1
-		}
+	// main logic
+	for i := range A {
+		A[i] = i + 1
 	}
+
+	target := A[L-1 : R]
+	sort.Slice(target, func(i, j int) bool {
+		return target[i] > target[j]
+	})
 
 	// convert int to str
 	tmp := make([]string, N)
